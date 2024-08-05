@@ -1,0 +1,70 @@
+<table class="table">
+  <th>
+    <tr>
+      <td>name</td>
+      <td>age</td>
+      <td>country</td>
+      <td>is_visible</td>
+      <td>logged_in</td>
+      <td>work_experince</td>
+      <td>state</td>
+      <td>spouse</td>
+    </tr>
+  </th>
+  <tr>
+    <td>
+      <%= @data[:name]%> <% if @data[:name] == "Mitul Mistry" %>(Elite Player)<% end %>
+    </td>
+    <td>
+      <%= @data[:age]%>
+    </td>
+    <td>
+      <%= @data[:country]%>
+      <% if @data[:country].upcase() == "USA" %>
+        (+1, USD) 
+      <% elsif @data[:country].upcase() == "UK" %>
+        (+44, GBP)
+      <% elsif @data[:country].upcase() == "INDIA" %>
+        (+91, INR)
+      <% elsif @data[:country].upcase() == "AUSTRALIA" %>
+        (+61, AUD)
+      <% elsif @data[:country].upcase() == "CANADA" %>
+        (+1, CAD)
+      <% else %>
+        Not in the records Sorry!
+      <% end %>
+    </td>
+    <td>
+      <%= @data[:is_visible]%>
+    </td>
+    <td>
+      <% if !@data[:logged_in] %>
+        Not
+      <% end %> Logged in
+    </td>
+    <td>
+      <%= @data[:work_experince]%>
+      <% if @data[:work_experince] >2 and  @data[:work_experince] <6 %>
+        (Mid Level)
+      <% elsif @data[:work_experince] > 5 %>
+        (Senior Level)
+      <% elsif @data[:work_experince] < 3 %>
+        (Junior Level)
+      <% end %>
+    </td>
+    <td>
+      <%= @data[:state]%>
+    </td>
+    <td>
+      <% if !@data[:spouse] %>
+        Single
+      <%else%>
+        <%=@data[:spouse]%>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<h5>
+  <% if @data[:country] =="INDIA" or @data[:country] =="CANADA"  %>
+    Job Market has to still improve
+  <% end %></h5>

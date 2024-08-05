@@ -1,0 +1,54 @@
+List of Products
+<%# <%= debug @Products %>
+<%# <%= @Products.to_yaml %>
+<%# <%= simple_format @Products.to_yaml %>
+<%# <%= @Products.inspect %>
+<table class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Qty.</td>
+      <td>In Stock</td>
+      <td>Discontinued</td>
+      <td>Price</td>
+    </tr>
+  </th>
+  <tbody>
+    <% @Products.each do | product | %>
+      <tr>
+        <td><%= product[:productID] %></td>
+        <td><%= product[:productName] %></td>
+        <td><%= product[:quantity] %></td>
+        <td><%= product[:unitsInStock] %></td>
+        <td><%= product[:disContinued] %></td>
+        <td><%= product[:cost] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<ul>
+  <%@Products.each do | product |%>
+    <li> <%= product[:productName] %> </li>
+  <%end%>
+</ul>
+<ul class="list-unstyled" >
+  <%@Products.each do | product |%>
+    <li> <input type="checkbox"> <%= product[:productName] %> </input> </li>
+<%end%>
+</ul>
+<ul class="list-unstyled" >
+  <%@Products.each do | product |%>
+    <li> <input type="radio" name="productName"> <%= product[:productName] %> </input> </li>
+<%end%>
+</ul>
+<ol>
+  <%@Products.each do | product |%>
+    <li> <%= product[:productName] %> </li>
+  <%end%>
+</ol>
+<select class="form-select">
+  <%@Products.each do | product |%>
+    <option name='<%= product[:productName]%>' > <%= product[:productName] %> </li>
+  <%end%>
+</select>
