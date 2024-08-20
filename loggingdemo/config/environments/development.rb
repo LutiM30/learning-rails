@@ -53,6 +53,18 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  # Logger Config
+  config.logger= Logger.new(STDOUT)
+  config.log_level= :warn
+  
+  # EXAMPLE OF DO
+   config.logger.formatter = proc do |severity,time,progname,msg|
+    "#{time} ---> #{severity}:- #{msg} \n"
+   end
+  config.logger.datetime_format= "%m-%d-%Y %H:%M:%S"
+
+   config.logger = ActiveSupport::Logger.new("log/mycustom.log")
+  
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
